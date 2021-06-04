@@ -21,15 +21,15 @@ p {
       font-family: Lato;
       font-size: 16px;
     }
-    .drop {
-      margin-top: 6px;
-      box-sizing: border-box;
-      border: 2px dotted #ddd;
-      padding: 12px;
-      border-radius: 4px;
-      &.on-drop {
-        background: rgb(168, 236, 194);
-      }
+  }
+  .drop {
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 2px dotted #ddd;
+    padding: 12px;
+    border-radius: 4px;
+    &.cdk-drop-list-dragging {
+      background: rgb(168, 236, 194);
     }
   }
 }

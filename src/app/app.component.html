@@ -1,29 +1,9 @@
-<ng-container *ngIf="false">
-  <ng-container *ngIf="{items: items} as datalayer">
-    <ng-template #itemTemplate let-item="item">
-      <article class="item" *ngIf="{children: datalayer.items | childItems:item} as itemdatalayer">
-        <span class="t">{{ item.title }}</span>
-        <div class="drop" *ngIf="itemdatalayer.children && itemdatalayer.children.length > 0">
-          <div class="children">
-            <ng-container *ngFor="let child of itemdatalayer.children">
-              <ng-container *ngTemplateOutlet="itemTemplate; context: { item: child }"></ng-container>
-            </ng-container>
-          </div>
-        </div>
-      </article>
-    </ng-template>
-    <ng-container *ngFor="let item of datalayer.items | masterItems">
-      <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
-    </ng-container>
-  </ng-container>
-</ng-container>
-
-
 <div cdkDropListGroup *ngIf="{master: items | masterItems} as datalayer">
   <ng-template #itemTemp let-item="item">
     <article class="item" *ngIf="{children: items | childItems:item} as localdatalayer">
       <span class="t">{{ item.title }}</span>
-      <div class="drop" cdkDropList (cdkDropListDropped)="onDragAndDrop($event)" [id]="item.id.toString()">
+      <div class="drop" cdkDropList (cdkDropListDropped)="onDragAndDrop($event)" [id]="item.id.toString()"
+        [cdkDropListConnectedTo]="items | reduceItemsToIds">
         <ng-container *ngIf="localdatalayer.children && localdatalayer.children.length">
           <ng-container *ngFor="let item of localdatalayer.children">
             <div cdkDrag [cdkDragData]="item">
@@ -34,7 +14,8 @@
       </div>
     </article>
   </ng-template>
-  <div class="drop" cdkDropList (cdkDropListDropped)="onDragAndDrop($event)" id="-1">
+  <div class="drop" cdkDropList (cdkDropListDropped)="onDragAndDrop($event)" id="-1"
+    [cdkDropListConnectedTo]="items | reduceItemsToIds">
     <ng-container *ngFor="let item of datalayer.master">
       <div cdkDrag [cdkDragData]="item">
         <ng-container *ngTemplateOutlet="itemTemp; context: {item: item}"></ng-container>
