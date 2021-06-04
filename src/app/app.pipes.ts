@@ -2,6 +2,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Item } from './app.models';
 
 @Pipe({
+  name: 'reduceItemsToIds'
+})
+export class ReduceItemsToIdsPipe implements PipeTransform {
+  transform(items: Item[]): string[] {
+    return items.map(i => i.id.toString());
+  }
+}
+
+@Pipe({
   name: 'masterItems'
 })
 export class MasterItemsPipe implements PipeTransform {
