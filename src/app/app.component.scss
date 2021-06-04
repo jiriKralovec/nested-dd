@@ -1,0 +1,27 @@
+p {
+  font-family: Lato;
+}
+:host {
+  .item {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    border-radius: 4px;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    margin-bottom: 2px;
+    .t,
+    .children {
+      display: block;
+      width: 100%;
+    }
+    .t {
+      font-family: Lato;
+      font-size: 16px;
+    }
+    .children {
+      margin-top: 6px;
+    }
+  }
+}
